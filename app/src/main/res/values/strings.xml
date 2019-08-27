@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">teste-android</string>
+    <string name="quanto_voce_gostaria_de_aplicas">Quanto voce gostaria de aplicar ?*</string>
+    <string name="qual_a_data_vencimento">Qual a data do vencimento do investimento ?*</string>
+    <string name="qual_percentual_do_cdi">Qual o percentual do CDI investido ?*</string>
+    <string name="reais">R$</string>
 </resources>
