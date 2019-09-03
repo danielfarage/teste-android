@@ -4,4 +4,9 @@
     <string name="qual_a_data_vencimento">Qual a data do vencimento do investimento ?*</string>
     <string name="qual_percentual_do_cdi">Qual o percentual do CDI investido ?*</string>
     <string name="reais">R$</string>
+    <string name="vencimento_do_investimento">Qual a data do vencimento do investimento ?*</string>
+    <string name="dia_mes_ano">dia/mes/ano</string>
+    <string name="qual_o_percentual_do_cdi_do_investimento">Qual o percentual do CDI do investimento ?*</string>
+    <string name="cem_por_cento">100%</string>
+    <string name="simular">Simular</string>
 </resources>
