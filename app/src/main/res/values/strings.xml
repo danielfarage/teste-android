@@ -9,4 +9,18 @@
     <string name="qual_o_percentual_do_cdi_do_investimento">Qual o percentual do CDI do investimento ?*</string>
     <string name="cem_por_cento">100%</string>
     <string name="simular">Simular</string>
+    <string name="simular_novamente">Simular novamente</string>
+    <string name="resultado_da_simula_ao">Resultado da simulaçao</string>
+    <string name="rendimento_total_de">Rendimento total de R$ 88,69</string>
+    <string name="valor_aplicado_inicialmente">Valor aplicado inicialmente</string>
+    <string name="valor_bruto_do_investimento">Valor bruto do investimento</string>
+    <string name="valor_do_rendimento">Valor do rendimento</string>
+    <string name="ir_sobre_o_investimento">IR sobre o investimento</string>
+    <string name="valor_liquido_do_investimento">Valor liquido do investimento</string>
+    <string name="data_de_resgate">Data de resgate</string>
+    <string name="dias_corridos">Dias corridos</string>
+    <string name="rendimento_mensal">Rendimento mensal</string>
+    <string name="percentual_do_cdi_do_investimento">Percentual do CDI do investimento</string>
+    <string name="rentabilidade_anual">Rentabilidade anual</string>
+    <string name="rentabilidade_no_periodo">Rentabilidade no periodo</string>
 </resources>
