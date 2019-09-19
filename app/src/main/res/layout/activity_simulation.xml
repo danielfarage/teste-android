@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/include_block_one" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:id="@+id/btn_simulate"
         style="@style/Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
