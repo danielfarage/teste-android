@@ -1,9 +1,17 @@
 package com.example.teste_android.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlin.coroutines.CoroutineContext
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
-class InputDataViewModel(override val coroutineContext: CoroutineContext) : ViewModel(), CoroutineScope {
+class InputDataViewModel() : ViewModel() {
+
+
+    fun launchData() {
+        viewModelScope.launch {
+
+        }
+    }
+
 
 }
