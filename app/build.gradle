@@ -30,24 +30,23 @@ dependencies {
     implementation Libraries.kotlinStdLib
     implementation Libraries.appCompat
     implementation Libraries.ktxCore
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.0'
+    implementation Libraries.constraintLayout
+    implementation Libraries.coroutinesCore
+
+    implementation Libraries.viewModelKtx
+    implementation Libraries.lifeCycle
+
+    implementation Libraries.recyclerView
+    implementation Libraries.koin
+    implementation Libraries.retrofit
+    implementation Libraries.gsonConverter
 
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
-    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+    testImplementation TestLibraries.mockk
+    testImplementation TestLibraries.junit4
+    testImplementation TestLibraries.coreTesting
+    testImplementation TestLibraries.coroutinesTest
 
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'org.koin:koin-android:2.0.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
-
-
-    testImplementation "io.mockk:mockk:1.9.3"
-    testImplementation 'junit:junit:4.12'
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation TestLibraries.testRunner
+    androidTestImplementation TestLibraries.espresso
 }
