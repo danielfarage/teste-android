@@ -1,5 +1,7 @@
 package com.example.teste_android.presentation.di
 
+import com.example.teste_android.data.api.RetrofitSetup
+import com.example.teste_android.data.api.SimulationInvestimentService
 import com.example.teste_android.data.repository.SimulateInvestimentRepositoryImpl
 import com.example.teste_android.domain.repositories.SimulateInvestimentRepository
 import com.example.teste_android.domain.usecases.SimulateInvestimentInteractor
@@ -17,5 +19,6 @@ val appModules = module {
 
     single<SimulateInvestimentRepository> { SimulateInvestimentRepositoryImpl() }
 
+    single<SimulationInvestimentService> { RetrofitSetup.retrofit.create(SimulationInvestimentService::class.java) }
 }
 
