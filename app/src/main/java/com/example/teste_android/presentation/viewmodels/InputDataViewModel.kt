@@ -4,11 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.teste_android.domain.usecases.SimulateInvestimentUseCase
 import com.example.teste_android.presentation.common.UIStates
 import com.example.teste_android.presentation.entities.Invest
 import kotlinx.coroutines.launch
 
-class InputDataViewModel() : ViewModel() {
+class InputDataViewModel(val simulateUseCase: SimulateInvestimentUseCase) : ViewModel() {
 
     private val invest = MutableLiveData<Invest>()
     private val state = MutableLiveData<UIStates>()
@@ -24,7 +25,7 @@ class InputDataViewModel() : ViewModel() {
 
     private fun simulateInvestiment(){
         state.postValue(UIStates.Loading)
-        // call use case
+        simulateUseCase.launchSimulation()
     }
 
 }

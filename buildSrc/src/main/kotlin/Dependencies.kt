@@ -23,7 +23,7 @@ object Libraries {
     const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
     const val lifeCycle = "androidx.lifecycle:lifecycle-extensions:${Versions.viewModel}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.jetpack}"
-    const val koin = "org.koin:koin-android:${Versions.koin}"
+    const val koin = "org.koin:koin-android-viewmodel:${Versions.koin}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 }

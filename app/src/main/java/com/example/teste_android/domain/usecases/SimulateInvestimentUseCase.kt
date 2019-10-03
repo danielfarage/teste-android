@@ -1,6 +1,6 @@
 package com.example.teste_android.domain.usecases
 
-interface SimulateContract {
+interface SimulateInvestimentUseCase {
 
     fun launchSimulation()
 

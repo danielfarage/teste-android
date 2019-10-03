@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.teste_android.R
 import com.example.teste_android.presentation.common.toMoney
+import com.example.teste_android.presentation.viewmodels.InputDataViewModel
 import kotlinx.android.synthetic.main.activity_input_data.*
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
 class InputDataActivity : AppCompatActivity() {
 
+    val inputViewModel: InputDataViewModel by viewModel()
     private lateinit var moneyApplied: EditText
     private lateinit var endOfInvestiment: EditText
     private lateinit var cdiPercent: EditText
@@ -24,6 +27,7 @@ class InputDataActivity : AppCompatActivity() {
         setContentView(R.layout.activity_input_data)
         setupViews()
         setupListeners()
+        inputViewModel.launchInvestiment("", "", "")
     }
 
     private fun setupViews() {
