@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.teste_android.R
 import com.example.teste_android.presentation.common.DialogLoading
+import com.example.teste_android.presentation.common.UIStates
 import com.example.teste_android.presentation.common.toMoney
 import com.example.teste_android.presentation.viewmodels.InputDataViewModel
 import kotlinx.android.synthetic.main.activity_input_data.*
@@ -32,8 +33,17 @@ class InputDataActivity : AppCompatActivity() {
         setContentView(R.layout.activity_input_data)
         setupViews()
         setupListeners()
-        //inputViewModel.launchInvestiment("", "", "")
-        loading.show()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        inputViewModel.updatedState.observe(this, androidx.lifecycle.Observer { state ->
+            when(state) {
+                is UIStates.Loading -> loading.show()
+                is UIStates.Failure -> Unit
+                is UIStates.Success<*> -> Unit
+            }
+        })
     }
 
     private fun setupViews() {
