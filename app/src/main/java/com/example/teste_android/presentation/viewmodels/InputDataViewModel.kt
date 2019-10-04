@@ -8,8 +8,9 @@ import com.example.teste_android.domain.usecases.SimulateInvestimentUseCase
 import com.example.teste_android.presentation.common.UIStates
 import com.example.teste_android.presentation.entities.Invest
 import kotlinx.coroutines.launch
+import org.koin.core.KoinApplication
 
-class InputDataViewModel(val simulateUseCase: SimulateInvestimentUseCase) : ViewModel() {
+class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase) : ViewModel() {
 
     private val invest = MutableLiveData<Invest>()
     private val state = MutableLiveData<UIStates>()
@@ -25,7 +26,16 @@ class InputDataViewModel(val simulateUseCase: SimulateInvestimentUseCase) : View
 
     private fun simulateInvestiment(){
         state.postValue(UIStates.Loading)
-        simulateUseCase.launchSimulation()
+        viewModelScope.launch {
+            try {
+                val simulatedData = simulateUseCase.launchSimulation()
+                KoinApplication.logger.info(simulatedData.toString())
+            } catch (e: Exception) {
+                e.message?.let { KoinApplication.logger.info(it) }
+            }
+
+        }
+
     }
 
 }

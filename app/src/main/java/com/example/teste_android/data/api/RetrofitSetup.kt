@@ -5,9 +5,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitSetup {
-    val retrofit = Retrofit.Builder().apply {
-        baseUrl(Constants.BASE_URL)
-        addConverterFactory(GsonConverterFactory.create())
-    }.build()
+    val retrofit: Retrofit by lazy {
+        Retrofit.Builder().apply {
+            baseUrl(Constants.BASE_URL)
+            addConverterFactory(GsonConverterFactory.create())
+        }.build()
+    }
 
 }

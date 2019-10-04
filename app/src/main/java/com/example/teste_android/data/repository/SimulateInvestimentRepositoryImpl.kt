@@ -1,18 +1,19 @@
 package com.example.teste_android.data.repository
 
+import com.example.teste_android.data.datasource.SimulationInvestimentRemoteDataSource
+import com.example.teste_android.data.entities.SimulationInvestimentResult
 import com.example.teste_android.domain.repositories.SimulateInvestimentRepository
 
-class SimulateInvestimentRepositoryImpl : SimulateInvestimentRepository {
+class SimulateInvestimentRepositoryImpl(
+    private val remoteDataSource: SimulationInvestimentRemoteDataSource
+) : SimulateInvestimentRepository {
 
-    override fun doSimulationInvestiment() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override suspend fun doSimulationInvestiment(): SimulationInvestimentResult {
+        return remoteDataSource.retrieveSimulation()
     }
 
-    override fun retrieveSimulationFromDB() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun retrieveSimulationFromDB() = Unit
 
-    override fun saveSimulationToDB() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
+    override fun saveSimulationToDB() = Unit
 }

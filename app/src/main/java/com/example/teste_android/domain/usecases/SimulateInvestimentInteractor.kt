@@ -1,13 +1,18 @@
 package com.example.teste_android.domain.usecases
 
+import com.example.teste_android.data.entities.SimulationInvestimentResult
 import com.example.teste_android.domain.repositories.SimulateInvestimentRepository
-import org.koin.core.KoinApplication
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class SimulateInvestimentInteractor(val simulateRepository: SimulateInvestimentRepository)
+class SimulateInvestimentInteractor(
+    private val simulateRepository: SimulateInvestimentRepository)
     : SimulateInvestimentUseCase {
 
-    override fun launchSimulation() {
-        KoinApplication.logger.info("ABACAXI")
+    override suspend fun launchSimulation(): SimulationInvestimentResult {
+        return withContext(Dispatchers.IO){
+            simulateRepository.doSimulationInvestiment()
+        }
     }
 
 }

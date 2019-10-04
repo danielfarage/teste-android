@@ -1,8 +1,10 @@
 package com.example.teste_android.data.datasource
 
+import com.example.teste_android.data.entities.SimulationInvestimentResult
+
 interface SimulationInvestimentDataSource {
 
-    fun retrieveSimulation()
+    suspend fun retrieveSimulation(): SimulationInvestimentResult
 
     fun saveSimulation()
 
