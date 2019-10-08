@@ -2,17 +2,21 @@ package com.example.teste_android.presentation.ui
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
 import com.example.teste_android.R
 import com.example.teste_android.presentation.common.DialogLoading
-import com.example.teste_android.presentation.common.UIStates
+import com.example.teste_android.presentation.common.*
 import com.example.teste_android.presentation.common.toMoney
 import com.example.teste_android.presentation.viewmodels.InputDataViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_input_data.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -26,6 +30,8 @@ class InputDataActivity : AppCompatActivity() {
     private lateinit var moneyApplied: EditText
     private lateinit var endOfInvestiment: EditText
     private lateinit var cdiPercent: EditText
+    private lateinit var buttonSimulate: Button
+    private lateinit var layoutWrapper: ConstraintLayout
     private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,9 +45,9 @@ class InputDataActivity : AppCompatActivity() {
     private fun observeViewModel() {
         inputViewModel.updatedState.observe(this, androidx.lifecycle.Observer { state ->
             when(state) {
-                is UIStates.Loading -> loading.show()
-                is UIStates.Failure -> Unit
-                is UIStates.Success<*> -> Unit
+                is Loading -> loading.show()
+                is Failure -> simulationInvestimentFailure(state.error)
+                is SuccessNoData -> simulationInvestimentSuccessful()
             }
         })
     }
@@ -50,9 +56,31 @@ class InputDataActivity : AppCompatActivity() {
         moneyApplied = et_money_applied
         endOfInvestiment = et_end_investment
         cdiPercent = et_cdi_percent
+        buttonSimulate = btn_simulate
+        layoutWrapper = layout_input_data
+    }
+
+    private fun simulationInvestimentSuccessful() {
+        loading.hide()
+        val showSimulationScreen = Intent(this, SimulationActivity::class.java)
+        startActivity(showSimulationScreen)
+    }
+
+    private fun simulationInvestimentFailure(error: Exception) {
+        loading.hide()
+        Snackbar.make(layoutWrapper, error.message!!, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun setupListeners() {
+
+        buttonSimulate.setOnClickListener {
+            inputViewModel.launchInvestiment(
+                moneyApplied.text.toString(),
+                cdiPercent.text.toString(),
+                endOfInvestiment.text.toString()
+            )
+        }
+
         moneyApplied.addTextChangedListener(moneyFormatterListener)
 
         cdiPercent.doAfterTextChanged { checkEditTextsToEnableContinue() }
