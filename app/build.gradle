@@ -42,8 +42,14 @@ dependencies {
     implementation Libraries.gsonConverter
 
 
-    testImplementation TestLibraries.mockk
     testImplementation TestLibraries.junit4
+    testRuntimeOnly TestLibraries.junit5_vintage
+    testImplementation TestLibraries.junit5_jupiter
+    testImplementation TestLibraries.junit5_jupiter_params
+    testRuntimeOnly TestLibraries.junit5_jupiter_runtime
+
+    testImplementation TestLibraries.mockk
+    testImplementation TestLibraries.roboelectric
     testImplementation TestLibraries.coreTesting
     testImplementation TestLibraries.coroutinesTest
 

@@ -31,18 +31,25 @@ object Libraries {
 object TestLibraries {
     private object Versions {
         const val junit4 = "4.12"
+        const val junit5 = "5.2.0"
         const val testRunner = "1.2.0"
         const val espresso = "3.2.0"
         const val mockk = "1.9.3"
         const val coroutines = "1.3.0"
         const val coreTesting = "2.1.0"
+        const val roboelectric = "4.3"
     }
 
     const val junit4 = "junit:junit:${Versions.junit4}"
+    const val junit5_jupiter = "org.junit.jupiter:junit-jupiter-api:${Versions.junit5}"
+    const val junit5_jupiter_runtime = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit5}"
+    const val junit5_jupiter_params = "org.junit.jupiter:junit-jupiter-params:${Versions.junit5}"
+    const val junit5_vintage = "org.junit.vintage:junit-vintage-engine:${Versions.junit5}"
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val roboelectric = "org.robolectric:robolectric:${Versions.roboelectric}"
 
 }
