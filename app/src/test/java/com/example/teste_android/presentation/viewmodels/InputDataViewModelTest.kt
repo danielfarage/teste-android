@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.teste_android.data.entities.SimulationInvestimentResult
 import com.example.teste_android.domain.usecases.SimulateInvestimentUseCase
+import com.example.teste_android.presentation.common.Failure
 import com.example.teste_android.presentation.common.Loading
 import com.example.teste_android.presentation.common.SuccessNoData
 import com.example.teste_android.presentation.common.UIStates
@@ -19,10 +20,12 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.function.Executable
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.ArgumentMatchers
 import org.mockito.ArgumentMatchers.any
+import org.mockito.ArgumentMatchers.anyString
 
 @RunWith(JUnit4::class)
 class InputDataViewModelTest {
@@ -56,12 +59,27 @@ class InputDataViewModelTest {
         } coAnswers { simulationResult }
 
         //act
-        viewModel.launchInvestiment("", "", "")
+        viewModel.launchInvestiment(anyString(), anyString(), anyString())
 
 
-        verify(exactly = 1) { observer.onChanged(Loading) }
-        verify(exactly = 1) { observer.onChanged(SuccessNoData) }
+        verify(exactly = 1) {
+            observer.onChanged(Loading)
+            observer.onChanged(SuccessNoData)
+        }
         assertEquals(SuccessNoData, viewModel.updatedState.value)
     }
+
+    @Test
+    fun launchSimulation_verifyIfExceptionisThrow() {
+        coEvery { useCase.launchSimulation() } coAnswers { throw Exception() }
+
+        viewModel.launchInvestiment(anyString(), anyString(), anyString())
+
+        verify(exactly = 2) {
+            observer.onChanged(any<UIStates>())
+        }
+        assertNotNull(viewModel.updatedState.value)
+    }
+
 
 }
