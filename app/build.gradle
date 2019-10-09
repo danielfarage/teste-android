@@ -23,6 +23,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -41,6 +44,9 @@ dependencies {
     implementation Libraries.koin
     implementation Libraries.retrofit
     implementation Libraries.gsonConverter
+
+    implementation Libraries.roomRuntime
+    kapt Libraries.roomCompiler
 
 
     testImplementation TestLibraries.junit4

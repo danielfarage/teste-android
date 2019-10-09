@@ -10,6 +10,7 @@ object Libraries {
         const val viewModel = "2.1.0"
         const val koin = "2.0.1"
         const val retrofit = "2.6.1"
+        const val room = "2.0.0-rc01"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
@@ -27,6 +28,8 @@ object Libraries {
     const val koin = "org.koin:koin-android-viewmodel:${Versions.koin}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val roomRuntime = "android.arch.persistence.room:runtime:${Versions.room}"
+    const val roomCompiler = "android.arch.persistence.room:compiler:${Versions.room}"
 }
 
 object TestLibraries {
@@ -36,7 +39,7 @@ object TestLibraries {
         const val testRunner = "1.2.0"
         const val espresso = "3.2.0"
         const val mockk = "1.9.3"
-        const val coroutines = "1.3.0"
+        const val coroutines = "1.3.2"
         const val coreTesting = "2.1.0"
         const val roboelectric = "4.3"
     }
