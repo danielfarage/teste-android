@@ -5,10 +5,11 @@ import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 import org.robolectric.RobolectricTestRunner
 import java.text.NumberFormat
 
-@RunWith(RobolectricTestRunner::class)
+@RunWith(JUnit4::class)
 class StringExtensionsKtTest {
 
     @Test

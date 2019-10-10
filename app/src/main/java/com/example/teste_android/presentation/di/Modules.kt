@@ -3,6 +3,7 @@ package com.example.teste_android.presentation.di
 import com.example.teste_android.data.api.RetrofitSetup
 import com.example.teste_android.data.api.SimulationInvestimentService
 import com.example.teste_android.data.datasource.SimulationInvestimentRemoteDataSource
+import com.example.teste_android.data.db.RoomClient
 import com.example.teste_android.data.repository.SimulateInvestimentRepositoryImpl
 import com.example.teste_android.domain.repositories.SimulateInvestimentRepository
 import com.example.teste_android.domain.usecases.SimulateInvestimentInteractor
@@ -26,5 +27,7 @@ val appModules = module {
     single { SimulationInvestimentRemoteDataSource(get()) }
 
     single { DialogLoading }
+
+    single { RoomClient(get()).db }
 }
 

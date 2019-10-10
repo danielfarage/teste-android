@@ -46,6 +46,7 @@ dependencies {
     implementation Libraries.gsonConverter
 
     implementation Libraries.roomRuntime
+    implementation Libraries.roomKtx
     kapt Libraries.roomCompiler
 
 
@@ -59,6 +60,7 @@ dependencies {
     testImplementation TestLibraries.roboelectric
     testImplementation TestLibraries.coreTesting
     testImplementation TestLibraries.coroutinesTest
+    testImplementation TestLibraries.roomTester
 
     androidTestImplementation TestLibraries.testRunner
     androidTestImplementation TestLibraries.espresso

@@ -10,7 +10,7 @@ object Libraries {
         const val viewModel = "2.1.0"
         const val koin = "2.0.1"
         const val retrofit = "2.6.1"
-        const val room = "2.0.0-rc01"
+        const val room = "2.2.0"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
@@ -28,8 +28,9 @@ object Libraries {
     const val koin = "org.koin:koin-android-viewmodel:${Versions.koin}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-    const val roomRuntime = "android.arch.persistence.room:runtime:${Versions.room}"
-    const val roomCompiler = "android.arch.persistence.room:compiler:${Versions.room}"
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
 }
 
 object TestLibraries {
@@ -42,6 +43,7 @@ object TestLibraries {
         const val coroutines = "1.3.2"
         const val coreTesting = "2.1.0"
         const val roboelectric = "4.3"
+        const val room = "2.2.0"
     }
 
     const val junit4 = "junit:junit:${Versions.junit4}"
@@ -55,5 +57,6 @@ object TestLibraries {
     const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val roboelectric = "org.robolectric:robolectric:${Versions.roboelectric}"
+    const val roomTester = "androidx.room:room-testing:${Versions.room}"
 
 }
