@@ -9,28 +9,25 @@ import java.io.Serializable
 @Entity
 data class SimulationInvestimentEntity (
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val investmentParameter: InvestmentEntity,
-    val grossAmount: Double,
-    val taxesAmount: Double,
-    val netAmount: Double,
-    val grossAmountProfit: Double,
-    val netAmountProfit: Double,
-    val annualGrossRateProfit: Double,
-    val monthlyGrossRateProfit: Double,
-    val dailyGrossRateProfit: Double,
-    val taxesRate: Double,
-    val rateProfit: Double,
-    val annualNetRateProfit: Double
-) : Serializable
+    var id: Int = 0,
 
-@Entity
-data class InvestmentEntity(
-    val investedAmount: Double,
-    val yearlyInterestRate: Double,
-    val maturityTotalDays: Int,
-    val maturityBusinessDays: Int,
-    val maturityDate: String,
-    val rate: Double,
-    val isTaxFree: Boolean
-)
+    var paramInvestedAmount: Double = 0.0,
+    var paramYearlyInterestRate: Double = 0.0,
+    var paramMaturityTotalDays: Int = 0,
+    var paramMaturityBusinessDays: Int = 0,
+    var paramMaturityDate: String = "",
+    var paramRate: Double = 0.0,
+    var paramIsTaxFree: Boolean = false,
+
+    var grossAmount: Double = 0.0,
+    var taxesAmount: Double = 0.0,
+    var netAmount: Double = 0.0,
+    var grossAmountProfit: Double = 0.0,
+    var netAmountProfit: Double = 0.0,
+    var annualGrossRateProfit: Double = 0.0,
+    var monthlyGrossRateProfit: Double = 0.0,
+    var dailyGrossRateProfit: Double = 0.0,
+    var taxesRate: Double = 0.0,
+    var rateProfit: Double = 0.0,
+    var annualNetRateProfit: Double = 0.0
+) : Serializable
