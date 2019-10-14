@@ -12,7 +12,7 @@ interface SimulationInvestimentDao {
     fun cacheSimulationInvestiment(investimentEntity: SimulationInvestimentEntity)
 
     @Query("SELECT * FROM SimulationInvestimentEntity")
-    fun retrieveCachedSimulation()
+    fun retrieveCachedSimulation(): List<SimulationInvestimentEntity>
 
 
 }
