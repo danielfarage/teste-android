@@ -53,6 +53,8 @@ object TestLibraries {
     const val junit5_vintage = "org.junit.vintage:junit-vintage-engine:${Versions.junit5}"
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val espressoAccessibility = "androidx.test.espresso:espresso-accessibility:${Versions.espresso}"
+    const val espressoContrib = "androidx.test.espresso:espresso-contrib:${Versions.espresso}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
