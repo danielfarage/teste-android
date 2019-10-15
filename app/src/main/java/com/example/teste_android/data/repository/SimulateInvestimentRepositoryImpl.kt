@@ -15,7 +15,7 @@ class SimulateInvestimentRepositoryImpl(
         return remoteDataSource.retrieveSimulation()
     }
 
-    override fun retrieveSimulationFromDB() {
+    override fun retrieveSimulationFromDB(): SimulationInvestimentEntity {
         TODO()
     }
 

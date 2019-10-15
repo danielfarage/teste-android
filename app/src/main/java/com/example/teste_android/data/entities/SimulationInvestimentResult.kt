@@ -1,26 +1,26 @@
 package com.example.teste_android.data.entities
 
 data class SimulationInvestimentResult(
-    val investmentParameter: InvestmentParameter,
-    val grossAmount: Double,
-    val taxesAmount: Double,
-    val netAmount: Double,
-    val grossAmountProfit: Double,
-    val netAmountProfit: Double,
-    val annualGrossRateProfit: Double,
-    val monthlyGrossRateProfit: Double,
-    val dailyGrossRateProfit: Double,
-    val taxesRate: Double,
-    val rateProfit: Double,
-    val annualNetRateProfit: Double
+    var investmentParameter: InvestmentParameter = InvestmentParameter(),
+    var grossAmount: Double = 0.0,
+    var taxesAmount: Double = 0.0,
+    var netAmount: Double = 0.0,
+    var grossAmountProfit: Double = 0.0,
+    var netAmountProfit: Double = 0.0,
+    var annualGrossRateProfit: Double = 0.0,
+    var monthlyGrossRateProfit: Double = 0.0,
+    var dailyGrossRateProfit: Double = 0.0,
+    var taxesRate: Double = 0.0,
+    var rateProfit: Double = 0.0,
+    var annualNetRateProfit: Double = 0.0
 )
 
 data class InvestmentParameter(
-    val investedAmount: Double,
-    val yearlyInterestRate: Double,
-    val maturityTotalDays: Int,
-    val maturityBusinessDays: Int,
-    val maturityDate: String,
-    val rate: Double,
-    val isTaxFree: Boolean
+    var investedAmount: Double = 0.0,
+    var yearlyInterestRate: Double = 0.0,
+    var maturityTotalDays: Int = 0,
+    var maturityBusinessDays: Int = 0,
+    var maturityDate: String = "",
+    var rate: Double = 0.0,
+    var isTaxFree: Boolean = false
 )
