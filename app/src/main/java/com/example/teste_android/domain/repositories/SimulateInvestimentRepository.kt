@@ -1,5 +1,6 @@
 package com.example.teste_android.domain.repositories
 
+import com.example.teste_android.data.entities.SimulationInvestimentEntity
 import com.example.teste_android.data.entities.SimulationInvestimentResult
 
 interface SimulateInvestimentRepository {
@@ -8,5 +9,5 @@ interface SimulateInvestimentRepository {
 
     fun retrieveSimulationFromDB()
 
-    fun saveSimulationToDB()
+    fun saveSimulationToDB(investimentEntity: SimulationInvestimentEntity)
 }

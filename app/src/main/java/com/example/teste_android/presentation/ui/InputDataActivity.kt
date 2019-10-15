@@ -33,6 +33,10 @@ class InputDataActivity : AppCompatActivity() {
     private lateinit var buttonSimulate: Button
     private lateinit var layoutWrapper: ConstraintLayout
     private val calendar = Calendar.getInstance()
+    private val year = calendar.get(Calendar.YEAR)
+    private val month = calendar.get(Calendar.MONTH)
+    private val day = calendar.get(Calendar.DAY_OF_MONTH)
+    private lateinit var calendarDialog: DatePickerDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,10 @@ class InputDataActivity : AppCompatActivity() {
         setupViews()
         setupListeners()
         observeViewModel()
+        calendarDialog = DatePickerDialog(this,
+            DatePickerDialog.OnDateSetListener { _, yearPicked, monthPicked, dayPicked ->
+                endOfInvestiment.setText("$dayPicked/${monthPicked+1}/$yearPicked")
+            }, year, month, day)
     }
 
     private fun observeViewModel() {
@@ -89,20 +97,7 @@ class InputDataActivity : AppCompatActivity() {
             isFocusable = false
             doAfterTextChanged { checkEditTextsToEnableContinue() }
             setOnClickListener {
-                val year = calendar.get(Calendar.YEAR)
-                val month = calendar.get(Calendar.MONTH)
-                val day = calendar.get(Calendar.DAY_OF_MONTH)
-                DatePickerDialog(
-                    context,
-                    DatePickerDialog.OnDateSetListener { _, yearPicked, monthPicked, dayPicked ->
-
-                        endOfInvestiment.setText("$dayPicked/${monthPicked+1}/$yearPicked")
-
-                    },
-                    year,
-                    month,
-                    day
-                ).show()
+                calendarDialog.show()
             }
         }
     }
@@ -135,5 +130,10 @@ class InputDataActivity : AppCompatActivity() {
         override fun afterTextChanged(editable: Editable?) = checkEditTextsToEnableContinue()
 
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int)  = Unit
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        calendarDialog.dismiss()
     }
 }

@@ -23,7 +23,7 @@ abstract class RobotBase {
     fun clickButton(resId: Int): ViewInteraction = onView(withId(resId)).perform(click())
 
     fun setDate(year: Int, month: Int, day: Int): ViewInteraction =
-        onView(withClassName(equalTo(DatePicker::class.simpleName))).perform(PickerActions.setDate(year, month, day))
+        onView(withClassName(equalTo(DatePicker::class.getFullName()))).perform(PickerActions.setDate(year, month, day))
 
     fun textView(resId: Int): ViewInteraction = onView(withId(resId))
 

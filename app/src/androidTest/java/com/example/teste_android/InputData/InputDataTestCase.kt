@@ -18,8 +18,8 @@ class InputDataTestCase {
 
         invest {
             setMoneyToApplied("1000")
-            setEndInvestiment(2019, 10, 15)
             setCDIPercent("100")
+            setEndInvestiment(2019, 10, 15)
         }
     }
 
