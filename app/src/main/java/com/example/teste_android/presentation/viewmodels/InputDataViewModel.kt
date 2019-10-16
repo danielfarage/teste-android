@@ -14,7 +14,7 @@ class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase
 
     private val invest = MutableLiveData<Invest>()
     private val state = MutableLiveData<UIStates>()
-    val updatedState:LiveData<UIStates>
+    val updatedState: LiveData<UIStates>
         get() = state
 
 
@@ -24,20 +24,21 @@ class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase
         simulateInvestiment()
     }
 
-    private fun simulateInvestiment(){
+    private fun simulateInvestiment() {
         state.postValue(Loading)
-        viewModelScope.launch {
-            try {
-                val simulatedData = simulateUseCase.launchSimulation()
-                KoinApplication.logger.info(simulatedData.toString())
-                state.postValue(SuccessNoData)
-            } catch (e: Exception) {
-                state.postValue(Failure(e))
-                e.message?.let { KoinApplication.logger.info(it) }
-            }
 
+        viewModelScope.launch {
+            val simulatedData = simulateUseCase.launchSimulation()
+            handleUseCaseResponse(simulatedData)
         }
 
+    }
+
+    private fun handleUseCaseResponse(response: UIStates) {
+        when (response) {
+            is SuccessNoData -> state.postValue(response)
+            is Failure -> state.postValue(response)
+        }
     }
 
 }

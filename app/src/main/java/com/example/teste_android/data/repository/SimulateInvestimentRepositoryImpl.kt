@@ -15,12 +15,12 @@ class SimulateInvestimentRepositoryImpl(
         return remoteDataSource.retrieveSimulation()
     }
 
-    override fun retrieveSimulationFromDB(): SimulationInvestimentEntity {
-        TODO()
+    override suspend fun retrieveSimulationFromDB(): SimulationInvestimentEntity {
+        return localDataSource.retrieveSimulation()
     }
 
 
-    override fun saveSimulationToDB(investimentEntity: SimulationInvestimentEntity) {
+    override suspend fun saveSimulationToDB(investimentEntity: SimulationInvestimentEntity) {
         localDataSource.saveSimulation(investimentEntity)
     }
 }

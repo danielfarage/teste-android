@@ -1,19 +1,20 @@
 package com.example.teste_android.data.datasource
 
-import com.example.teste_android.data.datasource.SimulationInvestimentDataSource
+import com.example.teste_android.data.dao.SimulationInvestimentDao
 import com.example.teste_android.data.db.InvestimentDatabase
 import com.example.teste_android.data.entities.SimulationInvestimentEntity
 import com.example.teste_android.data.entities.SimulationInvestimentResult
 
 class SimulationInvestimentLocalDataSource(
-    private val investimentDatabase: InvestimentDatabase
-) : SimulationInvestimentDataSource {
+    private val investimentDatabase: InvestimentDatabase) {
 
-    override suspend fun retrieveSimulation(): SimulationInvestimentResult {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private val investimentDao: SimulationInvestimentDao = investimentDatabase.investimentDao()
+
+    fun retrieveSimulation(): SimulationInvestimentEntity {
+        return investimentDao.retrieveCachedSimulation().first()
     }
 
-    override fun saveSimulation(investimentEntity: SimulationInvestimentEntity) {
-        investimentDatabase.investimentDao().cacheSimulationInvestiment(investimentEntity)
+    fun saveSimulation(investimentEntity: SimulationInvestimentEntity) {
+        investimentDao.cacheSimulationInvestiment(investimentEntity)
     }
 }

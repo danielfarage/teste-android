@@ -11,7 +11,7 @@ interface SimulationInvestimentDao {
     @Insert
     fun cacheSimulationInvestiment(investimentEntity: SimulationInvestimentEntity)
 
-    @Query("SELECT * FROM SimulationInvestimentEntity")
+    @Query("SELECT * FROM SimulationInvestimentEntity ORDER BY id DESC")
     fun retrieveCachedSimulation(): List<SimulationInvestimentEntity>
 
 
