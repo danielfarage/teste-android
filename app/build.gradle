@@ -68,4 +68,5 @@ dependencies {
     androidTestImplementation TestLibraries.espressoContrib
     androidTestImplementation TestLibraries.espressoAccessibility
     androidTestImplementation TestLibraries.extJunit
+    testImplementation TestLibraries.testCore
 }

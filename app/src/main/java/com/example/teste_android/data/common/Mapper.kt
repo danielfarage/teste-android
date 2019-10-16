@@ -1,62 +1,60 @@
 package com.example.teste_android.data.common
 
+import com.example.teste_android.data.entities.InvestmentParameter
 import com.example.teste_android.data.entities.SimulationInvestimentEntity
-import com.example.teste_android.presentation.entities.Investment
+import com.example.teste_android.data.entities.SimulationInvestimentResult
 import com.example.teste_android.presentation.entities.SimulatedInvestiment
 
 object Mapper {
 
-    fun toDatabaseEntity(simulatedInvestiment: SimulatedInvestiment): SimulationInvestimentEntity {
+    fun toDatabaseEntity(simulatedInvestiment: SimulationInvestimentResult): SimulationInvestimentEntity {
         return SimulationInvestimentEntity().apply {
-            paramInvestedAmount = simulatedInvestiment.investmentParameter.investedAmount.toDouble()
-            paramYearlyInterestRate =
-                simulatedInvestiment.investmentParameter.investedAmount.toDouble()
-            paramMaturityTotalDays = simulatedInvestiment.investmentParameter.investedAmount.toInt()
-            paramMaturityBusinessDays =
-                simulatedInvestiment.investmentParameter.investedAmount.toInt()
-            paramMaturityDate = simulatedInvestiment.investmentParameter.investedAmount
-            paramRate = simulatedInvestiment.investmentParameter.investedAmount.toDouble()
-            paramIsTaxFree = simulatedInvestiment.investmentParameter.investedAmount.toBoolean()
+            paramInvestedAmount = simulatedInvestiment.investmentParameter.investedAmount
+            paramYearlyInterestRate = simulatedInvestiment.investmentParameter.yearlyInterestRate
+            paramMaturityTotalDays = simulatedInvestiment.investmentParameter.maturityTotalDays
+            paramMaturityBusinessDays = simulatedInvestiment.investmentParameter.maturityBusinessDays
+            paramMaturityDate = simulatedInvestiment.investmentParameter.maturityDate
+            paramRate = simulatedInvestiment.investmentParameter.rate
+            paramIsTaxFree = simulatedInvestiment.investmentParameter.isTaxFree
 
-            grossAmount = simulatedInvestiment.grossAmount.toDouble()
-            taxesAmount = simulatedInvestiment.taxesAmount.toDouble()
-            netAmount = simulatedInvestiment.netAmount.toDouble()
-            grossAmountProfit = simulatedInvestiment.grossAmountProfit.toDouble()
-            netAmountProfit = simulatedInvestiment.netAmountProfit.toDouble()
-            annualGrossRateProfit = simulatedInvestiment.annualGrossRateProfit.toDouble()
-            monthlyGrossRateProfit = simulatedInvestiment.monthlyGrossRateProfit.toDouble()
-            dailyGrossRateProfit = simulatedInvestiment.dailyGrossRateProfit.toDouble()
-            taxesRate = simulatedInvestiment.taxesRate.toDouble()
-            rateProfit = simulatedInvestiment.rateProfit.toDouble()
-            annualNetRateProfit = simulatedInvestiment.annualNetRateProfit.toDouble()
+            grossAmount = simulatedInvestiment.grossAmount
+            taxesAmount = simulatedInvestiment.taxesAmount
+            netAmount = simulatedInvestiment.netAmount
+            grossAmountProfit = simulatedInvestiment.grossAmountProfit
+            netAmountProfit = simulatedInvestiment.netAmountProfit
+            annualGrossRateProfit = simulatedInvestiment.annualGrossRateProfit
+            monthlyGrossRateProfit = simulatedInvestiment.monthlyGrossRateProfit
+            dailyGrossRateProfit = simulatedInvestiment.dailyGrossRateProfit
+            taxesRate = simulatedInvestiment.taxesRate
+            rateProfit = simulatedInvestiment.rateProfit
+            annualNetRateProfit = simulatedInvestiment.annualNetRateProfit
 
         }
     }
 
-    fun fromDatabaseEntity(simulationEntity: SimulationInvestimentEntity): SimulatedInvestiment {
-        val investimentParams = Investment().apply {
-            investedAmount = simulationEntity.paramInvestedAmount.toString()
-            yearlyInterestRate = simulationEntity.paramYearlyInterestRate.toString()
-            maturityTotalDays = simulationEntity.paramMaturityTotalDays.toString()
-            maturityBusinessDays = simulationEntity.paramMaturityBusinessDays.toString()
+    fun toSimulationInvestimentResult(simulationEntity: SimulationInvestimentEntity): SimulationInvestimentResult {
+        val investimentParams = InvestmentParameter().apply {
+            investedAmount = simulationEntity.paramInvestedAmount
+            yearlyInterestRate = simulationEntity.paramYearlyInterestRate
+            maturityTotalDays = simulationEntity.paramMaturityTotalDays
+            maturityBusinessDays = simulationEntity.paramMaturityBusinessDays
             maturityDate = simulationEntity.paramMaturityDate
-            rate = simulationEntity.paramRate.toString()
-            isTaxFree = simulationEntity.paramIsTaxFree.toString()
+            rate = simulationEntity.paramRate
+            isTaxFree = simulationEntity.paramIsTaxFree
         }
-        return SimulatedInvestiment().apply {
+        return SimulationInvestimentResult().apply {
             investmentParameter = investimentParams
-            grossAmount = simulationEntity.grossAmount.toString()
-            taxesAmount = simulationEntity.taxesAmount.toString()
-            netAmount = simulationEntity.netAmount.toString()
-            grossAmountProfit = simulationEntity.grossAmountProfit.toString()
-            netAmountProfit = simulationEntity.netAmountProfit.toString()
-            annualGrossRateProfit = simulationEntity.annualGrossRateProfit.toString()
-            monthlyGrossRateProfit = simulationEntity.monthlyGrossRateProfit.toString()
-            dailyGrossRateProfit = simulationEntity.dailyGrossRateProfit.toString()
-            taxesRate = simulationEntity.taxesRate.toString()
-            rateProfit = simulationEntity.rateProfit.toString()
-            annualNetRateProfit = simulationEntity.annualNetRateProfit.toString()
-
+            grossAmount = simulationEntity.grossAmount
+            taxesAmount = simulationEntity.taxesAmount
+            netAmount = simulationEntity.netAmount
+            grossAmountProfit = simulationEntity.grossAmountProfit
+            netAmountProfit = simulationEntity.netAmountProfit
+            annualGrossRateProfit = simulationEntity.annualGrossRateProfit
+            monthlyGrossRateProfit = simulationEntity.monthlyGrossRateProfit
+            dailyGrossRateProfit = simulationEntity.dailyGrossRateProfit
+            taxesRate = simulationEntity.taxesRate
+            rateProfit = simulationEntity.rateProfit
+            annualNetRateProfit = simulationEntity.annualNetRateProfit
         }
     }
 
