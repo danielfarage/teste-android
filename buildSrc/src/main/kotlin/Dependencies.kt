@@ -46,6 +46,7 @@ object TestLibraries {
         const val testCore = "1.2.1-alpha02"
         const val roboelectric = "4.3"
         const val room = "2.2.0"
+        const val koin = "2.0.1"
         const val extJUnitVersion = "1.1.2-alpha02"
     }
 
@@ -59,6 +60,7 @@ object TestLibraries {
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val roboelectric = "org.robolectric:robolectric:${Versions.roboelectric}"
     const val roomTester = "androidx.room:room-testing:${Versions.room}"
+    const val koinTester = "org.koin:koin-test:${Versions.koin}"
 
     //Instrumentados
     const val testCore = "androidx.test:core:${Versions.testCore}"
