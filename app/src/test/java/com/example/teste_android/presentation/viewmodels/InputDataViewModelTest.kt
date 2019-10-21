@@ -3,15 +3,15 @@ package com.example.teste_android.presentation.viewmodels
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.teste_android.data.entities.SimulationInvestimentResult
-import com.example.teste_android.domain.usecases.SimulateInvestimentUseCase
+import com.example.teste_android.domain.usecases.contracts.SimulateInvestimentUseCase
 import com.example.teste_android.presentation.common.Failure
 import com.example.teste_android.presentation.common.Loading
 import com.example.teste_android.presentation.common.SuccessNoData
 import com.example.teste_android.presentation.common.UIStates
-import io.mockk.*
-import io.mockk.impl.annotations.MockK
+import io.mockk.coEvery
+import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
@@ -19,12 +19,10 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.function.Executable
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.ArgumentMatchers
-import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyString
 
 @RunWith(JUnit4::class)
@@ -36,7 +34,7 @@ class InputDataViewModelTest {
     val useCase: SimulateInvestimentUseCase = mockk()
     val simulationResult: SimulationInvestimentResult = mockk()
     val observer = mockk<Observer<UIStates>>(relaxed = true)
-    lateinit var viewModel:InputDataViewModel
+    lateinit var viewModel: InputDataViewModel
 
     @Before
     fun setup() {
@@ -51,12 +49,12 @@ class InputDataViewModelTest {
     }
 
     @Test
-    fun launchSimulation_verifyIfSimulationIsCalled() = runBlockingTest{
+    fun launchSimulation_verifyIfSimulationIsCalled() = runBlockingTest {
 
 
         coEvery {
             useCase.launchSimulation()
-        } coAnswers { simulationResult }
+        } coAnswers { SuccessNoData }
 
         //act
         viewModel.launchInvestiment(anyString(), anyString(), anyString())
@@ -70,8 +68,8 @@ class InputDataViewModelTest {
     }
 
     @Test
-    fun launchSimulation_verifyIfExceptionisThrow() {
-        coEvery { useCase.launchSimulation() } coAnswers { throw Exception() }
+    fun launchSimulation_verifyIfFailure() {
+        coEvery { useCase.launchSimulation() } coAnswers { Failure(mockk(relaxed = true)) }
 
         viewModel.launchInvestiment(anyString(), anyString(), anyString())
 

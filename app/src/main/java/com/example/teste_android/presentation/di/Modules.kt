@@ -7,8 +7,10 @@ import com.example.teste_android.data.datasource.SimulationInvestimentRemoteData
 import com.example.teste_android.data.db.RoomClient
 import com.example.teste_android.data.repository.SimulateInvestimentRepositoryImpl
 import com.example.teste_android.domain.repositories.SimulateInvestimentRepository
-import com.example.teste_android.domain.usecases.SimulateInvestimentInteractor
-import com.example.teste_android.domain.usecases.SimulateInvestimentUseCase
+import com.example.teste_android.domain.usecases.SimulateInvestimentUseCaseImpl
+import com.example.teste_android.domain.usecases.SimulatedUseCaseImpl
+import com.example.teste_android.domain.usecases.contracts.SimulateInvestimentUseCase
+import com.example.teste_android.domain.usecases.contracts.SimulatedUseCase
 import com.example.teste_android.presentation.common.DialogLoading
 import com.example.teste_android.presentation.viewmodels.InputDataViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -19,7 +21,9 @@ val appModules = module {
 
     viewModel { InputDataViewModel(get()) }
 
-    factory<SimulateInvestimentUseCase> { SimulateInvestimentInteractor(get()) }
+    factory<SimulateInvestimentUseCase> { SimulateInvestimentUseCaseImpl(get()) }
+
+    factory<SimulatedUseCase> { SimulatedUseCaseImpl(get()) }
 
     single<SimulateInvestimentRepository> { SimulateInvestimentRepositoryImpl(get(), get()) }
 

@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.teste_android.domain.usecases.SimulateInvestimentUseCase
+import com.example.teste_android.domain.usecases.contracts.SimulateInvestimentUseCase
 import com.example.teste_android.presentation.common.*
 import com.example.teste_android.presentation.entities.Invest
 import kotlinx.coroutines.launch
-import org.koin.core.KoinApplication
 
 class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase) : ViewModel() {
 

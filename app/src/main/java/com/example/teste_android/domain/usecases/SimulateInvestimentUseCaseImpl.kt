@@ -1,16 +1,15 @@
 package com.example.teste_android.domain.usecases
 
 import com.example.teste_android.data.common.Mapper
-import com.example.teste_android.data.entities.SimulationInvestimentResult
 import com.example.teste_android.domain.repositories.SimulateInvestimentRepository
+import com.example.teste_android.domain.usecases.contracts.SimulateInvestimentUseCase
 import com.example.teste_android.presentation.common.Failure
 import com.example.teste_android.presentation.common.SuccessNoData
 import com.example.teste_android.presentation.common.UIStates
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.koin.core.KoinApplication
 
-class SimulateInvestimentInteractor(
+class SimulateInvestimentUseCaseImpl(
     private val simulateRepository: SimulateInvestimentRepository)
     : SimulateInvestimentUseCase {
 
