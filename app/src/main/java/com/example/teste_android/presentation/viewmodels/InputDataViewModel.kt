@@ -31,6 +31,7 @@ class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase
             handleUseCaseResponse(simulatedData)
         }
 
+        state.postValue(UIStates.Loading(false))
     }
 
     private fun handleUseCaseResponse(response: UIStates<Nothing>) {

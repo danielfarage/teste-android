@@ -10,10 +10,12 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
 import androidx.core.widget.doAfterTextChanged
 import com.example.teste_android.R
 import com.example.teste_android.presentation.common.DialogLoading
-import com.example.teste_android.presentation.common.*
+import com.example.teste_android.presentation.common.UIStates
+import com.example.teste_android.presentation.common.closeSoftKeyboard
 import com.example.teste_android.presentation.common.toMoney
 import com.example.teste_android.presentation.viewmodels.InputDataViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -53,7 +55,13 @@ class InputDataActivity : AppCompatActivity() {
     private fun observeViewModel() {
         inputViewModel.updatedState.observe(this, androidx.lifecycle.Observer { state ->
             when(state) {
-                is UIStates.Loading -> loading.show()
+                is UIStates.Loading -> {
+                    if (state.showLoad) {
+                        loading.show()
+                    } else {
+                        loading.hide()
+                    }
+                }
                 is UIStates.Failure -> simulationInvestimentFailure(state.error)
                 is UIStates.SuccessNoData -> simulationInvestimentSuccessful()
             }
@@ -69,7 +77,6 @@ class InputDataActivity : AppCompatActivity() {
     }
 
     private fun simulationInvestimentSuccessful() {
-        loading.hide()
         val showSimulationScreen = Intent(this, SimulationActivity::class.java)
         startActivity(showSimulationScreen)
     }
@@ -97,6 +104,7 @@ class InputDataActivity : AppCompatActivity() {
             isFocusable = false
             doAfterTextChanged { checkEditTextsToEnableContinue() }
             setOnClickListener {
+                closeSoftKeyboard()
                 calendarDialog.show()
             }
         }

@@ -13,6 +13,7 @@ import com.example.teste_android.domain.usecases.contracts.SimulateInvestimentUs
 import com.example.teste_android.domain.usecases.contracts.SimulatedUseCase
 import com.example.teste_android.presentation.common.DialogLoading
 import com.example.teste_android.presentation.viewmodels.InputDataViewModel
+import com.example.teste_android.presentation.viewmodels.SimulationViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -20,6 +21,8 @@ import org.koin.dsl.module
 val appModules = module {
 
     viewModel { InputDataViewModel(get()) }
+
+    viewModel { SimulationViewModel(get()) }
 
     factory<SimulateInvestimentUseCase> { SimulateInvestimentUseCaseImpl(get()) }
 
