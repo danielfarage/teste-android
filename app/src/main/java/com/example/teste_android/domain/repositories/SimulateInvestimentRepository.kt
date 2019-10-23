@@ -9,5 +9,5 @@ interface SimulateInvestimentRepository {
 
     suspend fun retrieveSimulationFromDB(): SimulationInvestimentEntity
 
-    suspend fun saveSimulationToDB(investimentEntity: SimulationInvestimentEntity)
+    suspend fun saveSimulationToDB(investimentEntity: SimulationInvestimentEntity): Long
 }

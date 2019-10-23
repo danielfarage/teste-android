@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase) : ViewModel() {
 
     private val invest = MutableLiveData<Invest>()
-    private val state = MutableLiveData<UIStates>()
-    val updatedState: LiveData<UIStates>
+    private val state = MutableLiveData<UIStates<Nothing>>()
+    val updatedState: LiveData<UIStates<Nothing>>
         get() = state
 
 
@@ -24,7 +24,7 @@ class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase
     }
 
     private fun simulateInvestiment() {
-        state.postValue(Loading)
+        state.postValue(UIStates.Loading(true))
 
         viewModelScope.launch {
             val simulatedData = simulateUseCase.launchSimulation()
@@ -33,10 +33,10 @@ class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase
 
     }
 
-    private fun handleUseCaseResponse(response: UIStates) {
+    private fun handleUseCaseResponse(response: UIStates<Nothing>) {
         when (response) {
-            is SuccessNoData -> state.postValue(response)
-            is Failure -> state.postValue(response)
+            is UIStates.SuccessNoData -> state.postValue(response)
+            is UIStates.Failure -> state.postValue(response)
         }
     }
 

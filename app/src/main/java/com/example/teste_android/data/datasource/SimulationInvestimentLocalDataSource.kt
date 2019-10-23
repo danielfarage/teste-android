@@ -14,7 +14,7 @@ class SimulationInvestimentLocalDataSource(
         return investimentDao.retrieveCachedSimulation().first()
     }
 
-    fun saveSimulation(investimentEntity: SimulationInvestimentEntity) {
-        investimentDao.cacheSimulationInvestiment(investimentEntity)
+    fun saveSimulation(investimentEntity: SimulationInvestimentEntity): Long {
+        return investimentDao.cacheSimulationInvestiment(investimentEntity)
     }
 }

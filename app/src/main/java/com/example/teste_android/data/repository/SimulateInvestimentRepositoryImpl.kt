@@ -20,7 +20,7 @@ class SimulateInvestimentRepositoryImpl(
     }
 
 
-    override suspend fun saveSimulationToDB(investimentEntity: SimulationInvestimentEntity) {
-        localDataSource.saveSimulation(investimentEntity)
+    override suspend fun saveSimulationToDB(investimentEntity: SimulationInvestimentEntity): Long {
+        return localDataSource.saveSimulation(investimentEntity)
     }
 }

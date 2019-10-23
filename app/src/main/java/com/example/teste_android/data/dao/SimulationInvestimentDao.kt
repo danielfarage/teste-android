@@ -9,7 +9,7 @@ import com.example.teste_android.data.entities.SimulationInvestimentEntity
 interface SimulationInvestimentDao {
 
     @Insert
-    fun cacheSimulationInvestiment(investimentEntity: SimulationInvestimentEntity)
+    fun cacheSimulationInvestiment(investimentEntity: SimulationInvestimentEntity): Long
 
     @Query("SELECT * FROM SimulationInvestimentEntity ORDER BY id DESC")
     fun retrieveCachedSimulation(): List<SimulationInvestimentEntity>

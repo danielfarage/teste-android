@@ -53,9 +53,9 @@ class InputDataActivity : AppCompatActivity() {
     private fun observeViewModel() {
         inputViewModel.updatedState.observe(this, androidx.lifecycle.Observer { state ->
             when(state) {
-                is Loading -> loading.show()
-                is Failure -> simulationInvestimentFailure(state.error)
-                is SuccessNoData -> simulationInvestimentSuccessful()
+                is UIStates.Loading -> loading.show()
+                is UIStates.Failure -> simulationInvestimentFailure(state.error)
+                is UIStates.SuccessNoData -> simulationInvestimentSuccessful()
             }
         })
     }

@@ -5,6 +5,6 @@ import com.example.teste_android.presentation.common.UIStates
 
 interface SimulateInvestimentUseCase {
 
-    suspend fun launchSimulation(): UIStates
+    suspend fun launchSimulation(): UIStates<Nothing>
 
 }
