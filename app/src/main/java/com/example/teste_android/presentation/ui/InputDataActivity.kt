@@ -13,10 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.widget.doAfterTextChanged
 import com.example.teste_android.R
-import com.example.teste_android.presentation.common.DialogLoading
-import com.example.teste_android.presentation.common.UIStates
-import com.example.teste_android.presentation.common.closeSoftKeyboard
-import com.example.teste_android.presentation.common.toMoney
+import com.example.teste_android.presentation.common.*
 import com.example.teste_android.presentation.viewmodels.InputDataViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_input_data.*
@@ -125,7 +122,7 @@ class InputDataActivity : AppCompatActivity() {
 
                 val formatted = newValue
                     .toString()
-                    .toMoney()
+                    .toMoneyMask()
                 editedText = formatted
                 moneyApplied.apply {
                     setText(formatted)

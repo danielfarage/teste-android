@@ -1,6 +1,11 @@
 package com.example.teste_android.presentation.ui
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannedString
+import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -8,54 +13,50 @@ import com.example.teste_android.R
 import com.example.teste_android.presentation.common.UIStates
 import com.example.teste_android.presentation.entities.SimulatedInvestiment
 import com.example.teste_android.presentation.viewmodels.SimulationViewModel
+import kotlinx.android.synthetic.main.activity_simulation.*
+import kotlinx.android.synthetic.main.simulation_block_one.*
+import kotlinx.android.synthetic.main.simulation_block_two.*
 import org.koin.android.ext.android.inject
 import java.lang.Exception
 
 class SimulationActivity: AppCompatActivity() {
 
 // O valor a ser investido
-private val investedAmount: TextView =
+private lateinit var investedAmount: TextView
+
+private lateinit var grossAmountProfitTitle: TextView
 // Rentabilidade anual
-private val yearlyInterestRate: TextView
+private lateinit var yearlyInterestRate: TextView
 // Dias corridos
-private val maturityTotalDays: TextView
-// Dias úteis
-private val maturityBusinessDays: TextView
+private lateinit var maturityTotalDays: TextView
 // Data de vencimento
-private val maturityDate: TextView
+private lateinit var maturityDate: TextView
 // Percentual do papel
-private val rate: TextView
-// Isento de IR
-private lateinit var isTaxFree: TextView
+private lateinit var rate: TextView
 
 // Valor bruto do investimento
-private val grossAmount: TextView
+private lateinit var grossAmount: TextView
 // Valor do IR
-private val taxesAmount: TextView
+private lateinit var taxesAmount: TextView
 // Valor líquido
-private val netAmount: TextView
+private lateinit var netAmount: TextView
 // Rentabilidade bruta
-private val grossAmountProfit: TextView
+private lateinit var grossAmountProfit: TextView
 // Rentabilidade líquida
-private val netAmountProfit: TextView
+private lateinit var netAmountProfit: TextView
 // Rentabilidade bruta anual
-private val annualGrossRateProfit: TextView
+private lateinit var annualGrossRateProfit: TextView
 // Rentabilidade bruta mensal
-private val monthlyGrossRateProfit: TextView
-// Rentabilidade bruta diária
-private val dailyGrossRateProfit: TextView
-// Faixa do IR (%)
-private val taxesRate: TextView
+private lateinit var monthlyGrossRateProfit: TextView
 // Rentabilidade no período
-private val rateProfit: TextView
-// Rentabilidade líquida anual
-private val annualNetRateProfit: TextView
+private lateinit var rateProfit: TextView
 
     private val simulatedViewModel: SimulationViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simulation)
+        setupViews()
         simulatedViewModel.retrieveInvestiment()
         observeSimulatedView()
     }
@@ -76,7 +77,22 @@ private val annualNetRateProfit: TextView
     }
 
     private fun renderScreenInformations(investiment: SimulatedInvestiment) {
-
+        grossAmountProfitTitle.text = investiment.grossAmount
+        yearlyInterestRate.text = investiment.investmentParameter.yearlyInterestRate
+        maturityTotalDays.text = investiment.investmentParameter.maturityTotalDays
+        maturityDate.text = investiment.investmentParameter.maturityDate
+        rate.text = investiment.investmentParameter.rate
+        grossAmount.text = investiment.grossAmount
+        taxesAmount.text = investiment.taxesAmount
+        netAmount.text = investiment.netAmount
+        val spannedStringGrossAmount = SpannableString(getString(R.string.rendimento_total_de, investiment.grossAmountProfit) )
+        spannedStringGrossAmount.setSpan(ForegroundColorSpan( resources.getColor(R.color.colorAccent) ), 20, spannedStringGrossAmount.count(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        grossAmountProfit.text = spannedStringGrossAmount
+        netAmountProfit.text = investiment.netAmountProfit
+        annualGrossRateProfit.text = investiment.annualGrossRateProfit
+        monthlyGrossRateProfit.text = investiment.monthlyGrossRateProfit
+        rateProfit.text = investiment.rateProfit
+        investedAmount.text = investiment.investmentParameter.investedAmount
     }
 
     private fun renderScreenErrorOccurred(failure: Exception) {
@@ -89,6 +105,23 @@ private val annualNetRateProfit: TextView
 
     private fun informNoDataFound(){
 
+    }
+
+    private fun setupViews() {
+        grossAmountProfitTitle = tv_grossAmountProfitTitle
+        yearlyInterestRate = tv_rentabilidade_anual
+        maturityTotalDays = tv_dias_corridos
+        maturityDate = tv_data_resgate
+        rate = tv_percentual_cdi
+        grossAmount = tv_valor_bruto
+        taxesAmount = tv_ir_investimento
+        netAmount = tv_valor_liquido
+        grossAmountProfit = tv_grossAmountProfit
+        netAmountProfit = tv_valor_rendimento
+        annualGrossRateProfit = tv_rentabilidade_anual
+        monthlyGrossRateProfit = tv_rendimento_mensal
+        rateProfit = tv_rentabilidade_periodo
+        investedAmount = tv_valor_aplicado
     }
 
 }

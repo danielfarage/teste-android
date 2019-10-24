@@ -27,7 +27,7 @@ object Mapper {
             grossAmountProfit = simulationEntity.grossAmountProfit.toString().toMoney()
             netAmountProfit = simulationEntity.netAmountProfit.toString().toMoney()
             annualGrossRateProfit = simulationEntity.annualGrossRateProfit.toString().toMoney()
-            monthlyGrossRateProfit = simulationEntity.monthlyGrossRateProfit.toString().toMoney()
+            monthlyGrossRateProfit = simulationEntity.monthlyGrossRateProfit.toString().toPercent()
             dailyGrossRateProfit = simulationEntity.dailyGrossRateProfit.toString()
             taxesRate = simulationEntity.taxesRate.toString().toPercent()
             rateProfit = simulationEntity.rateProfit.toString().toPercent()

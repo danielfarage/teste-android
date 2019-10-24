@@ -11,7 +11,7 @@
     <string name="simular">Simular</string>
     <string name="simular_novamente">Simular novamente</string>
     <string name="resultado_da_simula_ao">Resultado da simulaçao</string>
-    <string name="rendimento_total_de">Rendimento total de R$ 88,69</string>
+    <string name="rendimento_total_de">Rendimento total de %1$s</string>
     <string name="valor_aplicado_inicialmente">Valor aplicado inicialmente</string>
     <string name="valor_bruto_do_investimento">Valor bruto do investimento</string>
     <string name="valor_do_rendimento">Valor do rendimento</string>

@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/grossAmountProfit"
+        android:id="@+id/tv_grossAmountProfitTitle"
         style="@style/TextViewLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_grossAmountProfit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -43,23 +43,23 @@
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/grossAmountProfit" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_grossAmountProfitTitle" />
 
     <include
         android:id="@+id/include_block_one"
         layout="@layout/simulation_block_one"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_grossAmountProfit"
+        app:layout_constraintStart_toStartOf="@+id/tv_grossAmountProfit"
+        app:layout_constraintTop_toBottomOf="@+id/tv_grossAmountProfit" />
 
     <include
         layout="@layout/simulation_block_two"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="@+id/tv_grossAmountProfit"
+        app:layout_constraintStart_toStartOf="@+id/tv_grossAmountProfit"
         app:layout_constraintTop_toBottomOf="@+id/include_block_one" />
 
     <androidx.appcompat.widget.AppCompatButton

@@ -9,12 +9,13 @@ import android.icu.util.TimeZone
 import android.os.Build
 import androidx.annotation.RequiresApi
 import java.lang.Exception
+import java.math.RoundingMode
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 @TargetApi(Build.VERSION_CODES.N)
-fun String.toMoney() : String {
+fun String.toMoneyMask() : String {
     val currencyInstance = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
     val newValue = this
         .replace(Regex("[R$,.]"), "")
@@ -26,9 +27,21 @@ fun String.toMoney() : String {
 }
 
 @TargetApi(Build.VERSION_CODES.N)
+fun String.toMoney() : String {
+    val currencyInstance = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
+    val newValue = this.toDouble()
+
+    return currencyInstance.format((newValue))
+
+}
+
+@TargetApi(Build.VERSION_CODES.N)
 fun String.toPercent() : String {
-    val percentInstance = NumberFormat.getPercentInstance().apply {  }
-    return percentInstance.format(this.toDouble()).toString()
+    val newValue = this.toDouble()
+    val percentInstance = NumberFormat.getPercentInstance().apply {
+        isParseIntegerOnly = true
+    }
+    return percentInstance.format(newValue*10).toString()
 }
 
 @TargetApi(Build.VERSION_CODES.O)
