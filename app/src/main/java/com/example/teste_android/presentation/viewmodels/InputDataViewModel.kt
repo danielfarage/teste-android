@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.teste_android.domain.usecases.contracts.SimulateInvestimentUseCase
 import com.example.teste_android.presentation.common.*
 import com.example.teste_android.presentation.entities.Invest
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase) : ViewModel() {
@@ -24,14 +25,13 @@ class InputDataViewModel(private val simulateUseCase: SimulateInvestimentUseCase
     }
 
     private fun simulateInvestiment() {
-        state.postValue(UIStates.Loading(true))
+        state.postValue(UIStates.Loading)
 
         viewModelScope.launch {
+            delay(3000)
             val simulatedData = simulateUseCase.launchSimulation()
             handleUseCaseResponse(simulatedData)
         }
-
-        state.postValue(UIStates.Loading(false))
     }
 
     private fun handleUseCaseResponse(response: UIStates<Nothing>) {

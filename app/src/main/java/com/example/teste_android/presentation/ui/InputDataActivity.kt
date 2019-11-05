@@ -52,13 +52,7 @@ class InputDataActivity : AppCompatActivity() {
     private fun observeViewModel() {
         inputViewModel.updatedState.observe(this, androidx.lifecycle.Observer { state ->
             when(state) {
-                is UIStates.Loading -> {
-                    if (state.showLoad) {
-                        loading.show()
-                    } else {
-                        loading.hide()
-                    }
-                }
+                is UIStates.Loading -> loading.show()
                 is UIStates.Failure -> simulationInvestimentFailure(state.error)
                 is UIStates.SuccessNoData -> simulationInvestimentSuccessful()
             }
@@ -74,6 +68,7 @@ class InputDataActivity : AppCompatActivity() {
     }
 
     private fun simulationInvestimentSuccessful() {
+        loading.hide()
         val showSimulationScreen = Intent(this, SimulationActivity::class.java)
         startActivity(showSimulationScreen)
     }

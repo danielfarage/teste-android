@@ -71,7 +71,7 @@ private lateinit var rateProfit: TextView
         when(state) {
             is UIStates.SuccessWithData -> renderScreenInformations(state.data)
             is UIStates.Failure -> renderScreenErrorOccurred(state.error)
-            is UIStates.Loading -> showLoadingDialog(state.showLoad)
+            //is UIStates.Loading -> showLoadingDialog(state.showLoad)
             is UIStates.SuccessNoData -> informNoDataFound()
         }
     }
